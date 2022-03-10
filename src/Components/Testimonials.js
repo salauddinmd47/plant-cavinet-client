@@ -32,8 +32,10 @@ const testimonnils = [
 const Testimonials = () => {
   var settings = {
     dots: true,
-    infinite: false,
-    speed: 500,
+    infinite: true,
+    autoplay: true,
+    speed: 4000,
+    autoplaySpeed: 4000,
     slidesToShow: 2,
     slidesToScroll: 3,
     initialSlide: 0,
@@ -67,12 +69,12 @@ const Testimonials = () => {
   return (
     <Container className="testimonial-container">
         <div className="text-center my-5">
-            <h4>TESTIMONIALS</h4>
-            <h2>WHAT OUR CLIENT SAYS</h2>
+            <h5>TESTIMONIALS</h5>
+            <h4>WHAT OUR CLIENT SAYS</h4>
         </div>
       <Slider {...settings}>
           {
-              testimonnils.map(testimonial=><div className=" ">
+              testimonnils.map(testimonial=><div key='testimonial.name' className=" ">
             <div className="d-flex align-items-center bg-light me-3">
             <div>
                 <img src={testimonial.img} height='150px' alt="" />

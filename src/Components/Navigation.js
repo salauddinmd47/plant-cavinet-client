@@ -1,17 +1,28 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import useFirebase from "../hooks/useFirebase";
 
 const Navigation = () => {
+  const {user, logOut} =  useAuth()
   return (
     <Navbar collapseOnSelect expand="lg" className="nav-container">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+       <Link className="text-decoration-none" to='/'> <Navbar.Brand  className="text-bold fs-2 " >PLANT CABINET</Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-            <Nav.Link href="#pricing">Store</Nav.Link>
-            <Nav.Link href="#pricing">About Us</Nav.Link>
+          <Nav className="ms-auto  ">
+            <Link className="nav-text active" to='/'>Home</Link>
+            <Link className="nav-text" to='/store'>Store</Link>
+            <Link className="nav-text" to='/aboutus'>About Us</Link>
+            <Link className="nav-text" to='/dashboard'>Dashboard</Link>
+            
+            {
+              !user.email?<Link to='/login'>
+              <Button variant='success'>Login</Button>
+            </Link>:<Button onClick={logOut} variant='danger'>Logout</Button>
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>

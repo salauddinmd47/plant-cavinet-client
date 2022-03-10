@@ -3,8 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import logo from '../images/logo.png'
 const Footer = () => {
     return (
-        <div className='mt-5'>
-            <Container>
+        <div className='mt-5 '>
+            <Container >
                 <Row xs={2} md={4}>
                     <Col>
                     <h4>Get In Touch With Us For The Best Quality Plants & Succulents</h4>

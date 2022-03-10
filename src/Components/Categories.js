@@ -3,6 +3,7 @@ import categoryImg1 from "../images/plant6-free-img-1.jpg";
 import categoryImg2 from "../images/cactus2-free-img.jpg";
 import categoryImg3 from "../images/plant4-free-img.jpg";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const categories = [
   {
     name: "Beautiful Plant Varieties",
@@ -26,7 +27,7 @@ const Categories = () => {
       <Row xs={1} md={3} className="g-4">
       {categories.map((category, index) => (
          
-          <Col className="">
+          <Col className="" key={index}>
             <Card className="category-card  ">
               <Card.Img variant="top" src={category.img} />
               <Card.Body className="card-info">
@@ -35,7 +36,7 @@ const Categories = () => {
                     {category.des}
                 </Card.Text>
                 <Card.Text className="btn-category"> 
-                    see collection
+                  <Link to='/store'>  see collection</Link>
                 </Card.Text>
               </Card.Body>
             </Card>

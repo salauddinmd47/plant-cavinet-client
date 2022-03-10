@@ -22,6 +22,7 @@
 }
 .nav-container{
   background-color: #e9eae5;
+  height: 60px;
 }
 .slick-prev:before, .slick-next:before{
   display: none !important;
@@ -64,14 +65,16 @@
   .card-info{
     background-color: var(--primary-color);
   }
-  .btn-category{
+  .btn-category a{
     color: #cf2e2e;
     transition: 0.5s;
     cursor:pointer;
     text-transform: uppercase;
+    text-decoration: none;
     font-size: 14px;
   }
-  .btn-category:hover{
+   
+  .btn-category a:hover{
     color:#abb8c3;
   }
   .category-card{
@@ -93,4 +96,46 @@
   }
   .testimonial-container{
     overflow: hidden;
+  }
+  .nav-text{
+    text-decoration: none;
+    margin-right: 25px;
+    color: #252525;
+    font-weight: 500;
+    padding: 5px 5px;
+    text-transform: uppercase;
+    transition: 0.5s; 
+  }
+  .nav-text:hover{
+    color: #cf2e2e;
+    background-color: green; 
+    border-radius: 5px;
+  }
+  .store-container{
+    background-color: var(--primary-color);
+    
+  }
+  .store-banner{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.383), rgba(0, 0, 0, 0.377)), url('./images/about-bg-1.jpg');
+    background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 80vh;
+  }
+  .sidebar{
+    /* background-color: var(--primary-color); */
+    height: 100vh;
+  }
+  .sidebar a{
+    text-decoration: none;
+    color: #252525;
+    display: block;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+  .shipping-form input{
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
   }

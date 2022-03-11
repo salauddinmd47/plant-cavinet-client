@@ -10,7 +10,7 @@ const AddProduct = () => {
         reset
       } = useForm();
       const onSubmit = (data) =>{
-          fetch(' http://localhost:4000/products',{
+          fetch(' https://whispering-bayou-14441.herokuapp.com/products',{
               method:'POST',
               headers:{
                   'Content-Type':'application/json'

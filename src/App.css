@@ -123,15 +123,17 @@
    height: 80vh;
   }
   .sidebar{
-    /* background-color: var(--primary-color); */
+    background-color: #878497;
     height: 100vh;
   }
   .sidebar a{
     text-decoration: none;
-    color: #252525;
+    color: #fcffff;
+    font-weight:600;
     display: block;
     margin-top: 30px;
     margin-left: 30px;
+    
   }
   .shipping-form input{
     margin-bottom: 10px;

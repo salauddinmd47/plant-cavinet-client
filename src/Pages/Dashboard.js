@@ -17,15 +17,15 @@ const Dashboard = () => {
   return (
     <>
       <div className="bg-success m-0 ">
-        <h2 className="m-0 text-center">Dashboard</h2>
+        <h2 style={{ backgroundColor:"#878497",color:"#fcffff" }} className="m-0 text-center  py-3">Dashboard</h2>
       </div>
       <div>
-        <div className="main-container bg-success d-flex">
+        <div className="main-container   d-flex">
           <motion.div
             animate={{ width: isOpen ? "200px" : "40px" }}
-            className="sidebar"
+            className="sidebar  "
           >
-            <FaBars onClick={toggle} className="ms-4 mt-2" />
+            <FaBars onClick={toggle} className="ms-4 mt-2 text-white" />
             {isOpen && (
               <div >
                 {" "}
@@ -36,7 +36,7 @@ const Dashboard = () => {
                   </Link>
                 </div>
                 <div>
-                  <Link to="myorder">My Orders</Link>
+                  <Link to="/dashboard">My Orders</Link>
                 </div>
                 <div>
                   <Link to="addreview">Add Reviews</Link>
@@ -60,9 +60,9 @@ const Dashboard = () => {
               </div>
             )}
           </motion.div>
-          <div className="w-100 bg-secondary mx-auto pt-3 p-5">
+          <div className="w-100 store-container pt-3 p-5">
             <Routes>
-              <Route path="myorder" element={<Myorders />} />
+              <Route path="/" element={<Myorders />} />
               <Route path="addreview" element={<AddReview />} />
               <Route path="addproduct" element={<AddProduct />} />
               <Route path="manageorders" element={<ManageOrders />} />

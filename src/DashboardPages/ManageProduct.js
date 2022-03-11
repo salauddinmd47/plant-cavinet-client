@@ -21,15 +21,13 @@ const ManageProduct = () => {
           if (data.deletedCount) {
             const restProducts = products.filter((item) => item._id !== id);
             setProducts(restProducts);
-            toast.success("Order deleted successfully !", {
-              position: toast.POSITION.TOP_CENTER,
-            });
+             alert('product deleted successfully')
           }
         });
     }
   };
   return (
-    <div className="bg-white ">
+    <div className="bg-white p-2 ">
       <h2 className="bg-dark text-center text-white  ">ALL ORDER</h2>
       <Table responsive >
         <thead>
@@ -42,7 +40,7 @@ const ManageProduct = () => {
             <th className="text-center">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="">
           {products.map((product, index) => (
             <tr key={product._id}>
               <td>{index + 1}</td>

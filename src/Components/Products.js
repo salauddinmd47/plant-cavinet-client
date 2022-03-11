@@ -6,7 +6,7 @@ import Product from "./Product";
 const Products = () => {
   const [plants, setPlants] = useState([])
   const [cactus, setCactus] = useState([])
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
   
   useEffect(()=>{
     fetch('http://localhost:4000/products')

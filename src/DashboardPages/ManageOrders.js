@@ -6,14 +6,14 @@ import { toast, ToastContainer } from "react-toastify";
 const ManageOrders = () => { 
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:4000/orders`)
+    fetch(`https://whispering-bayou-14441.herokuapp.com/orders`)
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
   }, []);
   const handleRemoveOrder = (id) => {
     const proceed = window.confirm("Want to delete your Order?");
     if (proceed) {
-      fetch(`http://localhost:4000/orders/${id}`, {
+      fetch(`https://whispering-bayou-14441.herokuapp.com/orders/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

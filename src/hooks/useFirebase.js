@@ -33,6 +33,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => {});
+          saveUser(email, name, 'POST')
         const destination = location?.state?.from || "/";
         navigate(destination);
         setSuccess("User Registered Successfully");
@@ -65,6 +66,7 @@ const useFirebase = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
+        saveUser(user.email, user.displayName, 'PUT')
         const destination = location?.state?.from || "/";
         navigate(destination);
         setLoading(false);
@@ -73,6 +75,20 @@ const useFirebase = () => {
         setAuthError(error.message);
       });
   };
+
+  const saveUser = (email, displayName, method)=>{
+    const user ={email,displayName}
+    fetch('https://whispering-bayou-14441.herokuapp.com/users',{
+      method:method,
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(user)
+    })
+    .then(res=> res.json())
+    .then(data=>{ 
+
+    })
+  }
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {

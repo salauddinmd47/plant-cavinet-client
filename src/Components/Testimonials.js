@@ -1,35 +1,43 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Slider from "react-slick";
-const testimonnils = [
+// const testimonnils = [
  
-  {
-    name: "sara jones",
-    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
-    profession: "interior designer",
-    img: "https://i.postimg.cc/qvTQc3Pp/user1-free-img-1.jpg",
-  },
-  {
-    name: "sara jones",
-    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
-    profession: "interior designer",
-    img: "https://i.postimg.cc/qvTQc3Pp/user1-free-img-1.jpg",
-  },
-  {
-    name: "Jessica Foxx",
-    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
-    profession: "student",
-    img: "https://i.postimg.cc/kX8ftchj/testimonial-2.jpg",
-  },
-  {
-    name: "Briana Luke",
-    des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
-    profession: "student",
-    img: "https://i.postimg.cc/qvxw17ry/user3-free-img.jpg",
-  },
-];
+//   {
+//     name: "sara jones",
+//     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
+//     profession: "interior designer",
+//     img: "https://i.postimg.cc/qvTQc3Pp/user1-free-img-1.jpg",
+//   },
+//   {
+//     name: "sara jones",
+//     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
+//     profession: "interior designer",
+//     img: "https://i.postimg.cc/qvTQc3Pp/user1-free-img-1.jpg",
+//   },
+//   {
+//     name: "Jessica Foxx",
+//     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
+//     profession: "student",
+//     img: "https://i.postimg.cc/kX8ftchj/testimonial-2.jpg",
+//   },
+//   {
+//     name: "Briana Luke",
+//     des: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi magnam officia a incidunt facilis saepe ut rerum reiciendis corporis consequatur!",
+//     profession: "student",
+//     img: "https://i.postimg.cc/qvxw17ry/user3-free-img.jpg",
+//   },
+// ];
 
 const Testimonials = () => {
+const [testimonials, setTestimonials] = useState([]);
+
+useEffect(()=>{
+  fetch('https://whispering-bayou-14441.herokuapp.com/testimonials')
+  .then(res=> res.json())
+  .then(data=> setTestimonials(data))
+},[])
+
   var settings = {
     dots: true,
     infinite: true,
@@ -74,7 +82,7 @@ const Testimonials = () => {
         </div>
       <Slider {...settings}>
           {
-              testimonnils.map(testimonial=><div key='testimonial.name' className=" ">
+              testimonials.map(testimonial=><div key='testimonial._id' className=" ">
             <div className="d-flex align-items-center bg-light me-3">
             <div>
                 <img src={testimonial.img} height='150px' alt="" />

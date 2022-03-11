@@ -7,14 +7,14 @@ const Myorders = () => {
   const { user } = useAuth();
   const [myOrders, setMyOrders] = useState([]);
   useEffect(() => {
-    fetch(`https://whispering-bayou-14441.herokuapp.com/orders?email=${user.email}`)
+    fetch(` http://localhost:4000/orders?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setMyOrders(data));
   }, [user.email]);
   const handleRemoveOrder = (id) => {
     const proceed = window.confirm("Want to delete your Order?");
     if (proceed) {
-      fetch(`https://whispering-bayou-14441.herokuapp.com/orders/${id}`, {
+      fetch(` http://localhost:4000/orders/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

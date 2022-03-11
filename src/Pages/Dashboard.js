@@ -11,7 +11,10 @@ import { Routes, Route, Link } from "react-router-dom";
 import { FaHome, FaBars } from "react-icons/fa";
 import AddReviewsTest from "./AddReviewsTest.js";
 import ManageProduct from "../DashboardPages/ManageProduct.js";
+import useAuth from "../hooks/useAuth.js";
+import AdminRoute from "../Components/AdminRoute.js";
 const Dashboard = () => {
+  const {admin} = useAuth()
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   return (
@@ -34,7 +37,10 @@ const Dashboard = () => {
                     {" "}
                     <FaHome /> Home
                   </Link>
-                </div>
+                  </div>
+               {
+                 !admin && <>
+                  
                 <div>
                   <Link to="/dashboard">My Orders</Link>
                 </div>
@@ -44,7 +50,11 @@ const Dashboard = () => {
                 <div>
                   <Link to="payment">Payment</Link>
                 </div>
-                <div>
+                 </>
+               }
+               {
+                 admin&& <>
+                  <div>
                   <Link to="makeadmin">Make Admin</Link>
                 </div>
                 <div>
@@ -56,6 +66,8 @@ const Dashboard = () => {
                 <div>
                   <Link to="manageproducts">Manage Products</Link>
                 </div>
+                 </>
+               }
                 
               </div>
             )}
@@ -65,11 +77,11 @@ const Dashboard = () => {
               <Route path="/" element={<Myorders />} />
               <Route path="addreview" element={<AddReview />} />
               <Route path="addproduct" element={<AddProduct />} />
-              <Route path="manageorders" element={<ManageOrders />} />
-              <Route path="makeadmin" element={<MakeAdmin />} />
+              <Route path="manageorders" element={ <AdminRoute> <ManageOrders /></AdminRoute>} />
+              <Route path="makeadmin" element={<AdminRoute><MakeAdmin /></AdminRoute> } />
               <Route path="payment" element={<Payment />} />
-              <Route path="allproducts" element={<AllProducts />} />
-              <Route path="manageproducts" element={<ManageProduct />} />
+              <Route path="allproducts" element={<AdminRoute><AllProducts /></AdminRoute> } />
+              <Route path="manageproducts" element={<AdminRoute><ManageProduct /></AdminRoute>} />
             </Routes>
           </div>
         </div>

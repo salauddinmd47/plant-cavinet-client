@@ -10,7 +10,7 @@ const AddReview = () => {
         reset
       } = useForm();
       const onSubmit = (data) =>{
-          fetch('https://whispering-bayou-14441.herokuapp.com/testimonials',{
+          fetch('http://localhost:4000/testimonials',{
               method:'POST',
               headers:{
                   'Content-Type':'application/json'
@@ -21,6 +21,7 @@ const AddReview = () => {
           .then(data=> {
                if(data.insertedId){
                    alert('Thanks for leaving your precious opinion for us')
+                   reset()
                }
           })
          }

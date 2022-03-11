@@ -16,7 +16,7 @@ const Navigation = () => {
             <Link className="nav-text active" to='/'>Home</Link>
             <Link className="nav-text" to='/store'>Store</Link>
             <Link className="nav-text" to='/aboutus'>About Us</Link>
-            <Link className="nav-text" to='/dashboard'>Dashboard</Link>
+            {user.email && <Link className="nav-text" to='/dashboard'>Dashboard</Link>}
             
             {
               !user.email?<Link to='/login'>

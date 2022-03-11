@@ -10,7 +10,7 @@ const Purchase = () => {
     const {productId} = useParams()
     const [product, setProduct] = useState({}); 
     useEffect(() => {
-        fetch(`https://whispering-bayou-14441.herokuapp.com/products/${productId}`)
+        fetch(` http://localhost:4000/products/${productId}`)
           .then((res) => res.json())
           .then(data=> setProduct(data))
            
@@ -25,7 +25,7 @@ const Purchase = () => {
       const purchaseProduct = {productName:product.name, img:product.img, }
       let shippingInfo = {...data,purchaseProduct};
       
-      fetch('https://whispering-bayou-14441.herokuapp.com/purchase',{
+      fetch(' http://localhost:4000/purchase',{
           method:'POST',
           headers:{
               'Content-Type':'application/json'

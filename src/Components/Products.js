@@ -9,7 +9,7 @@ const Products = () => {
   const [toggle, setToggle] = useState(true);
   
   useEffect(()=>{
-    fetch('https://whispering-bayou-14441.herokuapp.com/products')
+    fetch(' http://localhost:4000/products')
     .then(res=> res.json())
     .then(data=> {
       const cactus = data.filter((product) => product.category === "cactus");

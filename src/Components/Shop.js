@@ -13,7 +13,7 @@ const Shop = () => {
   const { productId } = useParams();
 
   useEffect(() => {
-    fetch(`https://whispering-bayou-14441.herokuapp.com/products/${productId}`)
+    fetch(` http://localhost:4000/products/${productId}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedCategory(data.category);
@@ -21,7 +21,7 @@ const Shop = () => {
       });
   }, [productId]);
   useEffect(() => {
-    fetch(`https://whispering-bayou-14441.herokuapp.com/products?category=${selectedCategory}`)
+    fetch(` http://localhost:4000/products?category=${selectedCategory}`)
       .then((res) => res.json())
       .then((data) => { 
         const restProduct = data.filter(item=> item._id !== productId)

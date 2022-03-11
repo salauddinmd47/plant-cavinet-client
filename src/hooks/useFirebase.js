@@ -17,6 +17,7 @@ const useFirebase = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState();
+  const [admin, setAdmin] = useState(false)
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -78,7 +79,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method)=>{
     const user ={email,displayName}
-    fetch('https://whispering-bayou-14441.herokuapp.com/users',{
+    fetch(' http://localhost:4000/users',{
       method:method,
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(user)
@@ -89,6 +90,13 @@ const useFirebase = () => {
     })
   }
 
+  useEffect(()=>{
+    fetch(`http://localhost:4000/users/${user.email}`)
+    .then(res=> res.json())
+    .then(data => {
+      console.log(data.admin)
+      setAdmin(data.admin)})
+  },[user.email])
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -110,7 +118,7 @@ const useFirebase = () => {
       })
       .catch((error) => {});
   };
-  return { registerUser, loginUser, user, logOut, loading, success,googleSignIn };
+  return { registerUser, admin, loginUser, user, logOut, loading, success,googleSignIn };
 };
 
 export default useFirebase;
